@@ -5,13 +5,17 @@ from Resources.alphabet import Alphabet
 def main():
     alphabet = Alphabet([])
     alphabet.introSymbol('a', 'abrir')
-    #alphabet.introSimbol('b', 'cerrar')
-    er = ER('a|', alphabet.symbols)
-    #print(er.erValidate())
-    print(er.erValidate())
+    alphabet.introSymbol('o', 'cerrar')
+    alphabet.introSymbol('ch', 'cerrar')
+    symbols = []
+    for symbol in alphabet.symbols:
+        symbols.append(symbol.value)
+    er = ER('a|ch', symbols)
+    # print(er.erValidate())
 
+    print("Parte recursiva")
 
+    print(er.inicio())
 
-    
 
 main()
