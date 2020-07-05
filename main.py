@@ -4,11 +4,11 @@ from Resources.alphabet import Alphabet
 
 def main():
     alphabet = Alphabet([])
-    alphabet.introSimbol('a', 'abrir')
+    alphabet.introSymbol('a', 'abrir')
     #alphabet.introSimbol('b', 'cerrar')
-    er = ER('a|', alphabet.simbols)
+    er = ER('a|', alphabet.symbols)
     #print(er.erValidate())
-    print(er.validar())
+    print(er.erValidate())
 
 
 
