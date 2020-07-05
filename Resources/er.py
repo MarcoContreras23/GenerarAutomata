@@ -3,39 +3,44 @@ from Resources.alphabet import Alphabet
 
 class ER:
 
-    def __init__(self, er, simbols):
+    def __init__(self, er, symbols):
         self.er = er
-        self.simbols = simbols
-        self.characters = ['|', '.', '+', '⁺', '(', ')', '?']
+        self.symbols = symbols
+        self.characters = ['|', '.', '*', '⁺', '(', ')', '?', '[', ']', 'Ɛ']
+
+    def inicio(self):
+        self.recursiveComprobation(self.er[0], "")
+
+    def recursiveComprobation(self, init, fin):
+        newList = []
+        if fin == self.er[len(self.er)-1]:
+            return newList
+        for i in range(len(self.er)-1):
+            if init in self.symbols:
+                newList.append(init)
+                self.recursiveComprobation(
+                    self.er[i+1], self.er[i+1])
+            elif self.er[i] in self.characters:
+                self.recursiveComprobation(
+                    self.er[i+1], self.er[i+1])
+            else:
+                self.recursiveComprobation(
+                    init + self.er[i+1], self.er[i+1])
 
     # Function to validate if all elements of ER are valids
     def erValidate(self):
-        validation = False
-        simbols = []
-        for simbol in self.simbols:
-            simbols.append(simbol)
+        validation = True
+        validateTerm = True
+        symbols = []
+        string = []
+        for symbol in self.symbols:
+            symbols.append(symbol)
         for element in self.er:
-            if element not in simbols and element not in self.characters:
-                print(element)
-                validation = True
-                return validation
+            print(element)
+            for sym in symbols:
+                string.append(sym)
+            for char in self.characters:
+                string.append(char)
+            if element not in string:
+                validation = False
         return validation
-
-    def validar(self):
-        validacion = False
-        simbolos = []
-        ER = []
-        
-        for simbolo in self.simbols:
-            simbolos.append(simbolo)
-            print(simbolo.value)
-        for elemento in self.er:
-            print(elemento) 
-            
-            if elemento in simbolos:
-                ER.append(elemento)
-        for caracter in self.characters:
-            if caracter in ER:
-                validacion = True
-                return True
-        return validacion
