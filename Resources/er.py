@@ -27,6 +27,17 @@ class ER:
                 self.recursiveComprobation(
                     init + self.er[i+1], self.er[i+1])
 
+    def buscar(self):
+
+        self.er.find(".")
+        termino = self.er.split(".")
+        primer_termino = termino[0]
+        segundo_termino = termino[1]
+        print("Se encotro una concatenación y es entre:")
+        print(primer_termino)
+        print(segundo_termino)
+        return True
+
     # Function to validate if all elements of ER are valids
     def erValidate(self):
         validation = True
