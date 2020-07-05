@@ -1,4 +1,4 @@
-from Resources.state import State
+from GraficResources.state import State
 
 
 class Automaton:
