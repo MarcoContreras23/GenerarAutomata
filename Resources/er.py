@@ -8,7 +8,7 @@ class ER:
     def __init__(self, er, symbols):
         self.er = er
         self.symbols = symbols
-        self.characters = ['|', '.', '*', '⁺', '(', ')', '?', '[', ']', 'Ɛ']
+        self.characters = ['|', '.', '*', '+', '(', ')', '?', '[', ']', 'Ɛ']
 
     def inicio(self):
         self.recursiveComprobation(self.er[0], "")
@@ -29,17 +29,6 @@ class ER:
                 self.recursiveComprobation(
                     init + self.er[i+1], self.er[i+1])
 
-    def buscar(self):
-
-        self.er.find(".")
-        termino = self.er.split(".")
-        primer_termino = termino[0]
-        segundo_termino = termino[1]
-        print("Se encotro una concatenación y es entre:")
-        print(primer_termino)
-        print(segundo_termino)
-        return True
-
     # Function to validate if all elements of ER are valids
     def erValidate(self):
         validation = True
@@ -57,3 +46,21 @@ class ER:
             if element not in string:
                 validation = False
         return validation
+
+    def ERaPosfijo(self):
+        posfijo =[]
+        Nollaves = []
+
+        for caracter in self.er:
+            if caracter != '(':
+                if caracter != ')':
+                    Nollaves.append(caracter)
+        for i in range(len(Nollaves)-1):
+            if Nollaves[i] in self.characters:
+                posfijo.append(Nollaves[i-1])
+                posfijo.append(Nollaves[i+1])
+                posfijo.append(Nollaves[i])
+        print(posfijo)
+        return True
+                    
+
