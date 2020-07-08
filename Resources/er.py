@@ -1,14 +1,19 @@
 from Resources.alphabet import Alphabet
+from GraficResources.automaton import *
 
-# comprobacion de git
+"""
+Autores: Camilo Gomez, Marco Contreras
+version: 3.0
+"""
 
-
+#Clase para evaluar la expresion regular
 class ER:
 
     def __init__(self, er, symbols):
         self.er = er
         self.symbols = symbols
         self.characters = ['|', '.', '*', '+', '(', ')', '?', '[', ']', 'Ɛ']
+        self.automaton = Automaton()
 
     def inicio(self):
         self.recursiveComprobation(self.er[0], "")
@@ -29,7 +34,7 @@ class ER:
                 self.recursiveComprobation(
                     init + self.er[i+1], self.er[i+1])
 
-    # Function to validate if all elements of ER are valids
+    # Metodo para validar que la ER concuerde con el alfabeto previamente asignado
     def erValidate(self):
         validation = True
         validateTerm = True
@@ -38,7 +43,6 @@ class ER:
         for symbol in self.symbols:
             symbols.append(symbol)
         for element in self.er:
-            print(element)
             for sym in symbols:
                 string.append(sym)
             for char in self.characters:
@@ -47,6 +51,7 @@ class ER:
                 validation = False
         return validation
 
+    #Crea una nueva lista de la ER sin tomar en cuenta los parentesis y saca el posfijo de la ER
     def ERaPosfijo(self):
         posfijo =[]
         Nollaves = []
@@ -61,6 +66,6 @@ class ER:
                 posfijo.append(Nollaves[i+1])
                 posfijo.append(Nollaves[i])
         print(posfijo)
-        return True
+        return self.erValidate()
                     
 
