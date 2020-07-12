@@ -75,9 +75,10 @@ class GUI:
                             Cost_field = Entry(
                                 screenTK3, textvariable=self.alphabet.introSymbol, width=25).place(x=150, y=30)
                             time_field = Entry(
-                                 screenTK3, textvariable = self.er, width=25).place(x=150 , y=70)
+                                 screenTK3, textvariable = self.er.symbols, width=25).place(x=150 , y=70)
                             Button(screenTK3, text="OK",
                                  command=lambda: self.er.erValidate()).place(x=150, y=100)
+                            
                             screenTK3.mainloop()
                     if event.type == QUIT:
                         pygame.quit()
